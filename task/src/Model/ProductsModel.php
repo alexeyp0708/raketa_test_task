@@ -1,18 +1,21 @@
 <?php
 
-namespace Raketa\BackendTestTask\View;
+namespace Raketa\BackendTestTask\Model;
 
 use Raketa\BackendTestTask\Repository\Entity\Product;
 use Raketa\BackendTestTask\Repository\ProductRepository;
 
-readonly class ProductsView
+readonly class ProductsModel implements ProductsModelInterface
 {
     public function __construct(
         private ProductRepository $productRepository
     ) {
     }
 
-    public function toArray(string $category): array
+    /**
+     * @inheritDoc
+     */
+    public function getProductsByCategory(string $category): array
     {
         return array_map(
             fn (Product $product) => [

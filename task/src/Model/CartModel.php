@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types = 1);
-
-namespace Raketa\BackendTestTask\View;
+namespace Raketa\BackendTestTask\Model;
 
 use Raketa\BackendTestTask\Domain\Cart;
 use Raketa\BackendTestTask\Repository\ProductRepository;
 
-readonly class CartView
+readonly class CartModel implements  CartModelInterface
 {
     public function __construct(
         private ProductRepository $productRepository
     ) {
     }
 
-    public function toArray(Cart $cart): array
+    public function unpackDataToArray(Cart $cart): array
     {
         $data = [
             'uuid' => $cart->getUuid(),
@@ -41,7 +39,7 @@ readonly class CartView
                 'price' => $item->getPrice(),
                 'total' => $total,
                 'quantity' => $item->getQuantity(),
-                'product' => [
+                'product' => is_null($product)?[]:[
                     'id' => $product->getId(),
                     'uuid' => $product->getUuid(),
                     'name' => $product->getName(),

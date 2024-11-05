@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Raketa\BackendTestTask\Domain;
 
-final readonly class CartItem
+final readonly class CartItem implements CartItemInterface
 {
     public function __construct(
         public string $uuid,

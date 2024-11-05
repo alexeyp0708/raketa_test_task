@@ -6,27 +6,27 @@ namespace Raketa\BackendTestTask\Repository;
 
 use Doctrine\DBAL\Connection;
 use Raketa\BackendTestTask\Repository\Entity\Product;
+use Raketa\BackendTestTask\Repository\Entity\ProductInterface;
 
-class ProductRepository
+readonly class ProductRepository implements ProductRepositoryInterface
 {
-    private Connection $connection;
-
-    public function __construct(Connection $connection)
+    public function __construct(
+        private Connection $connection
+    )
     {
-        $this->connection = $connection;
+        
     }
 
-    public function getByUuid(string $uuid): Product
+    /**
+     * @inheritDoc
+     * @throws \Doctrine\DBAL\Exception
+     */
+    public function getByUuid(string $uuid): ?ProductInterface
     {
-        $row = $this->connection->fetchOne(
+        $row = $this->connection->fetchOne (
             "SELECT * FROM products WHERE uuid = " . $uuid,
         );
-
-        if (empty($row)) {
-            throw new Exception('Product not found');
-        }
-
-        return $this->make($row);
+        return empty($row)?null:$this->make($row);
     }
 
     public function getByCategory(string $category): array
@@ -39,7 +39,7 @@ class ProductRepository
         );
     }
 
-    public function make(array $row): Product
+    public function make(array $row): ProductInterface
     {
         return new Product(
             $row['id'],

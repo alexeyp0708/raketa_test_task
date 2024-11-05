@@ -6,14 +6,15 @@ namespace Raketa\BackendTestTask\Controller;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Raketa\BackendTestTask\Repository\CartManager;
-use Raketa\BackendTestTask\View\CartView;
+use Raketa\BackendTestTask\Infrastructure\JsonResponse;
+use Raketa\BackendTestTask\Model\CartModelInterface;
+use Raketa\BackendTestTask\Repository\CartManagerRepositoryInterface;
 
-readonly class GetCartController
+readonly class CartGetterController
 {
     public function __construct(
-        public CartView $cartView,
-        public CartManager $cartManager
+        public CartModelInterface             $cartModel,
+        public CartManagerRepositoryInterface $cartManager
     ) {
     }
 
@@ -36,7 +37,7 @@ readonly class GetCartController
         } else {
             $response->getBody()->write(
                 json_encode(
-                    $this->cartView->toArray($cart),
+                    $this->cartModel->unpackDataToArray($cart),
                     JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES
                 )
             );

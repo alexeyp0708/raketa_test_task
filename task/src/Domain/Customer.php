@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Raketa\BackendTestTask\Domain;
 
-final readonly class Customer
+final readonly class Customer implements CustomerInterface
 {
     public function __construct(
         private int $id,

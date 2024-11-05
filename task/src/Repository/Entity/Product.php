@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Raketa\BackendTestTask\Repository\Entity;
 
-readonly class Product
+readonly class Product implements ProductInterface
 {
     public function __construct(
         private int $id,
@@ -15,7 +15,9 @@ readonly class Product
         private string $description,
         private string $thumbnail,
         private float $price,
-    ) {
+    ) 
+    {
+        
     }
 
     public function getId(): int
