@@ -2,7 +2,6 @@
 
 namespace Raketa\BackendTestTask\Repository;
 
-use Exception;
 use Psr\Log\LoggerInterface;
 use Raketa\BackendTestTask\Domain\CartInterface;
 use Raketa\BackendTestTask\Infrastructure\ConnectorException;
