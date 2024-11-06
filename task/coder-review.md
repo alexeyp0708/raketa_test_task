@@ -8,7 +8,7 @@
 - [Зависимости должны внедряться по  интерфейсному типу](https://github.com/alexeyp0708/raketa_test_task/blob/66b36eb8888f57a52dbb8fdbcbf47929c304c0f1/task/src/Controller/GetCartController.php#L14)
 - [Переименовать на ProductsGetterController](https://github.com/alexeyp0708/raketa_test_task/blob/66b36eb8888f57a52dbb8fdbcbf47929c304c0f1/task/src/Controller/GetProductsController.php#L11)
 - [Зависимости должны внедряться по  интерфейсному типу](https://github.com/alexeyp0708/raketa_test_task/blob/66b36eb8888f57a52dbb8fdbcbf47929c304c0f1/task/src/Controller/GetProductsController.php#L13)
-- [Файл переместить в каталог Infrastructure (не место для контроллеров)](https://github.com/alexeyp0708/raketa_test_task/blob/task/task/src/Controller/JsonResponse.php)
+- [Файл переместить в каталог Infrastructure (Данному не место в каталоге для контроллеров)](https://github.com/alexeyp0708/raketa_test_task/blob/task/task/src/Controller/JsonResponse.php)
 - [Убрать declare(strict_types = 1)](https://github.com/alexeyp0708/raketa_test_task/blob/66b36eb8888f57a52dbb8fdbcbf47929c304c0f1/task/src/Domain/Cart.php#L3)
 - [Создать интерфейс для класса](https://github.com/alexeyp0708/raketa_test_task/blob/66b36eb8888f57a52dbb8fdbcbf47929c304c0f1/task/src/Domain/Cart.php#L7)
 - [Зависимости должны внедряться по интерфейсному типу](https://github.com/alexeyp0708/raketa_test_task/blob/66b36eb8888f57a52dbb8fdbcbf47929c304c0f1/task/src/Domain/Cart.php#L9)
