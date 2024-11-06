@@ -5,11 +5,12 @@ namespace Raketa\BackendTestTask\Model;
 use Raketa\BackendTestTask\Domain\Cart;
 use Raketa\BackendTestTask\Repository\ProductRepository;
 
-readonly class CartModel implements  CartModelInterface
+readonly class CartModel implements CartModelInterface
 {
     public function __construct(
         private ProductRepository $productRepository
-    ) {
+    )
+    {
     }
 
     public function unpackDataToArray(Cart $cart): array
@@ -39,7 +40,7 @@ readonly class CartModel implements  CartModelInterface
                 'price' => $item->getPrice(),
                 'total' => $total,
                 'quantity' => $item->getQuantity(),
-                'product' => is_null($product)?[]:[
+                'product' => is_null($product) ? [] : [
                     'id' => $product->getId(),
                     'uuid' => $product->getUuid(),
                     'name' => $product->getName(),

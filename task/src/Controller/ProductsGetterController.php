@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Raketa\BackendTestTask\Controller;
 
@@ -13,9 +13,9 @@ readonly class ProductsGetterController
 {
     public function __construct(
         private ProductsModelInterface $productsModel
-    ) 
+    )
     {
-        
+
     }
 
     public function get(RequestInterface $request): ResponseInterface

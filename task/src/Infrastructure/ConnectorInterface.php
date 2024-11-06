@@ -11,7 +11,7 @@ interface ConnectorInterface
      * @return mixed
      * @throws ConnectorExceptionInterface
      */
-    public function get(string $key):mixed;
+    public function get(string $key): mixed;
 
     /**
      * @param string $key
@@ -19,7 +19,7 @@ interface ConnectorInterface
      * @return void
      * @throws ConnectorExceptionInterface
      */
-    public function set(string $key, CartInterface $value):void;
+    public function set(string $key, CartInterface $value): void;
 
     /**
      * @param string $key

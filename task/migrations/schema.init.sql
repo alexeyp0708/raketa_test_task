@@ -3,7 +3,7 @@ create table if not exists products
     id int auto_increment primary key,
     uuid  varchar(255) not null comment 'UUID товара',
     category  varchar(255) not null comment 'Категория товара',
-    is_active tinyint default 1  not null comment 'Флаг активности',
+    is_active tinyint(1) default 1  not null comment 'Флаг активности',
     name text default '' not null comment 'Тип услуги',
     description text null comment 'Описание товара',
     thumbnail  varchar(255) null comment 'Ссылка на картинку',

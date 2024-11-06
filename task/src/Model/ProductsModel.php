@@ -9,7 +9,8 @@ readonly class ProductsModel implements ProductsModelInterface
 {
     public function __construct(
         private ProductRepository $productRepository
-    ) {
+    )
+    {
     }
 
     /**
@@ -18,7 +19,7 @@ readonly class ProductsModel implements ProductsModelInterface
     public function getProductsByCategory(string $category): array
     {
         return array_map(
-            fn (Product $product) => [
+            fn(Product $product) => [
                 'id' => $product->getId(),
                 'uuid' => $product->getUuid(),
                 'category' => $product->getCategory(),

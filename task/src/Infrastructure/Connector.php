@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Raketa\BackendTestTask\Infrastructure;
 
-use Raketa\BackendTestTask\Domain\Cart;
 use Raketa\BackendTestTask\Domain\CartInterface;
 use Redis;
 use RedisException;
@@ -24,6 +23,7 @@ class Connector implements ConnectorInterface
     public function get(string $key): mixed
     {
         try {
+            // будет исключение если $this->redis->get($key) вернет данные отличные от строки.
             return unserialize($this->redis->get($key));
         } catch (RedisException $e) {
             throw new ConnectorException('Connector error', $e->getCode(), $e);

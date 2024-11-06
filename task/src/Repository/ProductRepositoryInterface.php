@@ -12,7 +12,9 @@ interface ProductRepositoryInterface
      * @throws \Raketa\BackendTestTask\Repository\ProductExceptionInterface
      */
     public function getByUuid(string $uuid): ?ProductInterface;
+
     public function getByCategory(string $category): array;
+
     public function make(array $row): ProductInterface;
-    
+
 }

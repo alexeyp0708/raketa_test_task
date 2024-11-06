@@ -5,10 +5,10 @@ namespace Raketa\BackendTestTask\Domain;
 final class Cart implements CartInterface
 {
     public function __construct(
-        readonly private string   $uuid,
+        readonly private string            $uuid,
         readonly private CustomerInterface $customer,
-        readonly private string   $paymentMethod,
-        private array             $items
+        readonly private string            $paymentMethod,
+        private array                      $items
     )
     {
     }

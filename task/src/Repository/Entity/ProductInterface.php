@@ -19,5 +19,5 @@ interface ProductInterface
     public function getThumbnail(): string;
 
     public function getPrice(): float;
-    
+
 }

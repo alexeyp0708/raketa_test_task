@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Raketa\BackendTestTask\Repository;
 
@@ -14,7 +14,7 @@ readonly class ProductRepository implements ProductRepositoryInterface
         private Connection $connection
     )
     {
-        
+
     }
 
     /**
@@ -23,16 +23,16 @@ readonly class ProductRepository implements ProductRepositoryInterface
      */
     public function getByUuid(string $uuid): ?ProductInterface
     {
-        $row = $this->connection->fetchOne (
+        $row = $this->connection->fetchOne(
             "SELECT * FROM products WHERE uuid = " . $uuid,
         );
-        return empty($row)?null:$this->make($row);
+        return empty($row) ? null : $this->make($row);
     }
 
     public function getByCategory(string $category): array
     {
         return array_map(
-            static fn (array $row): Product => $this->make($row),
+            static fn(array $row): Product => $this->make($row),
             $this->connection->fetchAllAssociative(
                 "SELECT id FROM products WHERE is_active = 1 AND category = " . $category,
             )

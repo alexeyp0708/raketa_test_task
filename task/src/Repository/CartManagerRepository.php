@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Raketa\BackendTestTask\Repository;
 
 use Psr\Log\LoggerInterface;
@@ -14,7 +16,7 @@ class CartManagerRepository implements CartManagerRepositoryInterface
 
     public function __construct(
         readonly private ConnectorInterface $connector,
-        private LoggerInterface    $logger
+        private LoggerInterface             $logger
     )
     {
 
@@ -22,16 +24,16 @@ class CartManagerRepository implements CartManagerRepositoryInterface
 
     /**
      * Этот метод необходимо применять в сервис контейнере для внедрения зависимости Connector.
-     * 
+     *
      * @param string $host
      * @param int $port
      * @param int $password
      * @return \Raketa\BackendTestTask\Infrastructure\ConnectorInterface
      * @throws \Raketa\BackendTestTask\Infrastructure\ConnectorException
      */
-    public static function generateConnector(string $host,int $port, int $password): ConnectorInterface
+    public static function generateConnector(string $host, int $port, int $password): ConnectorInterface
     {
-        $connectorFactory=new ConnectorFactory($host,$port,$password,1);
+        $connectorFactory = new ConnectorFactory($host, $port, $password, 1);
         $connector = $connectorFactory->build();
         if (is_null($connector)) {
             throw new ConnectorException('No connection.');
@@ -45,19 +47,19 @@ class CartManagerRepository implements CartManagerRepositoryInterface
     }
 
 
-    public function saveCart(CartInterface $cart):void
+    public function saveCart(CartInterface $cart): void
     {
         try {
-            $this->connector->set(session_id(),$cart);
+            $this->connector->set(session_id(), $cart);
         } catch (ConnectorExceptionInterface $e) {
             $this->logger->error($e->getMessage());
         }
     }
 
-    public function getCart():?CartInterface
+    public function getCart(): ?CartInterface
     {
         try {
-            //Возвращаемый тип mixed  ,  так как Redis:: get в Connector::get возвращает mixed. Необходимо рефакторить.   
+            //Возвращаемый тип mixed  ,  так как Redis::get в Connector::get возвращает mixed. Необходимо рефакторить.   
             return $this->connector->get(session_id());
         } catch (ProductExceptionInterface $e) {
             $this->logger->error($e->getMessage());

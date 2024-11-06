@@ -13,6 +13,11 @@ use Ramsey\Uuid\Uuid;
 
 readonly class CartAdderController
 {
+    /**
+     * @param \Raketa\BackendTestTask\Repository\ProductRepositoryInterface $productRepository
+     * @param \Raketa\BackendTestTask\Model\CartModelInterface $cartModel
+     * @param \Raketa\BackendTestTask\Repository\CartManagerRepositoryInterface $cartManager
+     */
     public function __construct(
         private ProductRepositoryInterface     $productRepository,
         private CartModelInterface             $cartModel,
