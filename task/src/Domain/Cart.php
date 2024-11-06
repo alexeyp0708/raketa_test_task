@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types = 1);
-
 namespace Raketa\BackendTestTask\Domain;
 
-final class Cart
+final class Cart implements CartInterface
 {
     public function __construct(
-        readonly private string $uuid,
-        readonly private Customer $customer,
-        readonly private string $paymentMethod,
-        private array $items,
-    ) {
+        readonly private string            $uuid,
+        readonly private CustomerInterface $customer,
+        readonly private string            $paymentMethod,
+        private array                      $items
+    )
+    {
     }
 
     public function getUuid(): string
@@ -34,7 +33,7 @@ final class Cart
         return $this->items;
     }
 
-    public function addItem(CartItem $item): void
+    public function addItem(CartItemInterface $item): void
     {
         $this->items[] = $item;
     }
